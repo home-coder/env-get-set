@@ -48,7 +48,7 @@ load_env(char *data, int sz)
 		cmd_value = strchr(cmd, '=');
 
 		if (cmd_value != NULL) {
-			cmd_len = cmd_value - cmd;
+			cmd_len = cmd_value - cmd;//pointer calu
 			for (j = cmd_len; cmd_key[j - 1] == ' ' && j > 0; --j);
 
 			cmd_key[j] = '\0';
