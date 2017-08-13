@@ -23,7 +23,7 @@ set_env(char *key, char *value)
 	dbgprint("%s=%s\n", key, value);
 }
 
-int
+void
 load_env(char *data, int sz)
 {
 	char *s;
@@ -32,8 +32,9 @@ load_env(char *data, int sz)
 	char *cmd_value;
 	char *cmd;
 	int ret;
-	char *addr = data;
+	char *addr;
 
+	addr = data;
 	env_len = sz;
 	for (i = 0; i < env_len; i = nxt + 1) {
 		for (nxt = i; addr[nxt] != '\n'; ++nxt);
@@ -67,10 +68,8 @@ load_env(char *data, int sz)
 		}
 
 		set_env(cmd_key, cmd_value);
-
 	}
 
-	return 0;
 }
 
 static char *
